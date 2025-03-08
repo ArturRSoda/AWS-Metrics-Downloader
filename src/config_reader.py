@@ -1,13 +1,16 @@
-import json
+import yaml
 
 def config_reader():
-    f = open('configs.json')
-    data = json.load(f)
-    return (
-        data["n_instances"],
-        data["fetch_period"],
-        data["csv_dir"],
-        data["graph_dir"],
-        data["metrics_to_fetch"]
-    )
+    with open('config.yaml', 'r') as file:
+        data = yaml.safe_load(file)
+
+        return (
+            data["n_instances"],
+            data["fetch_period"],
+            data["csv_dir"],
+            data["graph_dir"],
+            data["graph_title"],
+            data["metrics_to_fetch"]
+        )
+
 

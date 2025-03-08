@@ -1,0 +1,15 @@
+n_instances: 4 
+fetch_period: 3
+
+csv_dir: ./simple_mpi_benchmark/4Node/M5/exec1/csv
+graph_dir: ./simple_mpi_benchmark/4Node/M5/exec1/graph
+
+graph_title:
+
+metrics_to_fetch:
+    - CPUUtilization
+    - CPUCreditUsage
+    - CPUCreditBalance
+    - CPUSurplusCreditBalance
+    - CPUSurplusCreditsCharged
+
