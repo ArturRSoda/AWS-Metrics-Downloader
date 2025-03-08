@@ -1,12 +1,12 @@
-n_instances: 4 
-fetch_period: 3
+n_instances: 4  # Number of recent instances to fetch metrics for
+fetch_period: 3  # Time range (in hours) to fetch metrics for
 
-csv_dir: ./simple_mpi_benchmark/4Node/M5/exec1/csv
-graph_dir: ./simple_mpi_benchmark/4Node/M5/exec1/graph
+csv_dir: ./simple_mpi_benchmark/4Node/M5/exec1/csv  # Directory where CSV files will be saved
+graph_dir: ./simple_mpi_benchmark/4Node/M5/exec1/graph # Directory where graphs will be saved
 
-graph_title:
+graph_title: ""  # Title for the graphs (optional)
 
-metrics_to_fetch:
+metrics_to_fetch:  # List of CloudWatch metrics to fetch
     - CPUUtilization
     - CPUCreditUsage
     - CPUCreditBalance
