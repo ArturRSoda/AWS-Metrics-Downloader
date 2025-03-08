@@ -1,15 +1,18 @@
-n_instances: 4  # Number of recent instances to fetch metrics for
+n_instances: 16  # Number of recent instances to fetch metrics for
 fetch_period: 3  # Time range (in hours) to fetch metrics for
 
-csv_dir: ./simple_mpi_benchmark/4Node/M5/exec1/csv  # Directory where CSV files will be saved
-graph_dir: ./simple_mpi_benchmark/4Node/M5/exec1/graph # Directory where graphs will be saved
-
-graph_title: ""  # Title for the graphs (optional)
+csv_dir: ./test/csv  # Directory where CSV files will be saved
+graph_dir: ./test/graph # Directory where graphs will be saved
 
 metrics_to_fetch:  # List of CloudWatch metrics to fetch
-    - CPUUtilization
-    - CPUCreditUsage
-    - CPUCreditBalance
-    - CPUSurplusCreditBalance
-    - CPUSurplusCreditsCharged
+    - CPUUtilization:
+        graph_title: T3-Unlimited CPUUtilization  # Graph title
+    - CPUCreditUsage:
+        graph_title: T3-Unlimited CPUCreditUsage
+    - CPUCreditBalance:
+        graph_title: T3-Unlimited CPUCreditUsage
+    - CPUSurplusCreditBalance:
+        graph_title: T3-Unlimited CPUSurplusCreditBalance
+    - CPUSurplusCreditsCharged:
+        graph_title: T3-Unlimited CPUSurplusCreditsCharged
 

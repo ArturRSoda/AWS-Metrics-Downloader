@@ -7,6 +7,15 @@ from PyPDF2 import PdfMerger
 def save_metrics_to_files(metric_data, output_dir='metrics'):
     if (not os.path.exists(output_dir)):
         os.makedirs(output_dir)
+    else:
+        print("CSV dir already exists! All inside file will be deleted!")
+        print()
+
+        for filename in os.listdir(output_dir):
+            file_path = os.path.join(output_dir, filename)
+
+            if (os.path.isfile(file_path)):
+                os.remove(file_path) 
 
     for metric, df in metric_data.items():
         df.to_csv("%s/%s.csv" % (output_dir, metric), index=False)
@@ -14,10 +23,18 @@ def save_metrics_to_files(metric_data, output_dir='metrics'):
     print()
 
 #  Generate graphs
-def generate_line_graphs(output_dir='metrics', graph_dir='graphs', title=None):
-    print(title)
+def generate_line_graphs(output_dir='metrics', graph_dir='graphs', metric_names=None, graph_titles=None):
     if (not os.path.exists(graph_dir)):
         os.makedirs(graph_dir)
+    else:
+        print("Graph dir already exists! All inside file will be deleted!")
+        print()
+
+        for filename in os.listdir(graph_dir):
+            file_path = os.path.join(graph_dir, filename)
+
+            if (os.path.isfile(file_path)):
+                os.remove(file_path) 
 
     colors = plt.cm.tab20.colors  # 20 distinct colors
 
@@ -36,11 +53,14 @@ def generate_line_graphs(output_dir='metrics', graph_dir='graphs', title=None):
             for i, col in enumerate(df.columns[1:-1]):  # Skip Timestamp and Time columns
                 plt.plot(df['Time'], df[col], color=colors[i], label= "Node %d" % (i+1))
 
+            assert(metric_names is not None)
+            assert(graph_titles is not None)
+
             # Format x-axis
             plt.xticks(rotation=45)
             plt.xlabel('Time (HH:MM:SS)')
             plt.ylabel('Value')
-            plt.title("%s Over TIme" % (metric_name) if (title==None) else title)
+            plt.title(graph_titles[metric_names.index(metric_name)])
             plt.legend(bbox_to_anchor=(1.05, 1))
             plt.tight_layout()
 
