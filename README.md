@@ -6,8 +6,6 @@ This Python script fetches CloudWatch metrics for the most recent EC2 instances,
 - Fetches metrics like `CPUUtilization`, `CPUCreditUsage`, `CPUCreditBalance`, etc.
 - Saves metrics to CSV files (one file per metric).
 - Generates line graphs for each metric (one graph per metric).
-- Handles missing or incomplete data gracefully.
-- Configurable via a `config.yaml` file.
 
 ## Pre-requisites
 
@@ -54,7 +52,7 @@ Run the script with the following command:
    python3 main.py
    ```
 
-###output
+### Output
 
 - **CSV Files**: Saved in the `csv_dir` directory.
 - **Graphs**: Saved in the `graph_dir` directory.
